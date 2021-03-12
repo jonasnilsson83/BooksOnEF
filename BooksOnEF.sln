@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksOnEF.Api", "BooksOnEF.Api\BooksOnEF.Api.csproj", "{F96AE6B8-969D-42B2-91FC-0E1007250090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksOnEF.Api", "BooksOnEF.Api\BooksOnEF.Api.csproj", "{F96AE6B8-969D-42B2-91FC-0E1007250090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksOnEF.Core", "BooksOnEF.Core\BooksOnEF.Core.csproj", "{FC14A0AA-E83C-4527-9F23-53A67F99163E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksOnEF.Core", "BooksOnEF.Core\BooksOnEF.Core.csproj", "{FC14A0AA-E83C-4527-9F23-53A67F99163E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksOnEF.Data", "BooksOnEF.Data\BooksOnEF.Data.csproj", "{7A76B71E-276A-4530-A829-131C9B327A68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksOnEF.Data", "BooksOnEF.Data\BooksOnEF.Data.csproj", "{7A76B71E-276A-4530-A829-131C9B327A68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksOnEF.Services", "BooksOnEF.Services\BooksOnEF.Services.csproj", "{B831A5F2-449B-4B7A-A650-7BEA50B4F106}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksOnEF.Services", "BooksOnEF.Services\BooksOnEF.Services.csproj", "{B831A5F2-449B-4B7A-A650-7BEA50B4F106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksOnEF.WebApp", "BooksOnEF.WebApp\BooksOnEF.WebApp.csproj", "{F8131268-A719-4A6C-B43D-0F9214672191}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F96AE6B8-969D-42B2-91FC-0E1007250090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +71,23 @@ Global
 		{B831A5F2-449B-4B7A-A650-7BEA50B4F106}.Release|x64.Build.0 = Release|Any CPU
 		{B831A5F2-449B-4B7A-A650-7BEA50B4F106}.Release|x86.ActiveCfg = Release|Any CPU
 		{B831A5F2-449B-4B7A-A650-7BEA50B4F106}.Release|x86.Build.0 = Release|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Debug|x64.Build.0 = Debug|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Debug|x86.Build.0 = Debug|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Release|x64.ActiveCfg = Release|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Release|x64.Build.0 = Release|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Release|x86.ActiveCfg = Release|Any CPU
+		{F8131268-A719-4A6C-B43D-0F9214672191}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {586FF916-5280-4B18-BD25-506B4424C526}
 	EndGlobalSection
 EndGlobal
