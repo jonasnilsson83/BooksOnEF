@@ -59,7 +59,7 @@ namespace BooksOnEF.Api
             //services.AddTransient<IBookRepository, BookRepository>();
             //services.AddTransient<IAuthorService, AuthorService>();
             //services.AddTransient<IBookService, BookService>();
-
+            services.AddCors();
 
             //services.AddControllersWithViews();
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -78,6 +78,10 @@ namespace BooksOnEF.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            // Make sure you call this before calling app.UseMvc()
+            app.UseCors(
+                options => options.WithOrigins("*").AllowAnyMethod()
+            );
             app.UseHttpsRedirection();
 
             app.UseRouting();
