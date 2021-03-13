@@ -34,7 +34,7 @@ namespace BooksOnEF.Api.Controllers
         }
 
         [HttpPost("")]
-        public async Task<ActionResult> CreateBook(Book book)
+        public async Task<ActionResult> CreateBook(CreateBookModel book)
         {
             var result = await _bookService.CreateBook(book);
 
@@ -46,6 +46,17 @@ namespace BooksOnEF.Api.Controllers
             {
                 return BadRequest(result.FailureMessages);
             }
+        }
+
+        [HttpPut("")]
+        public async Task<ActionResult> UpdateBook([FromBody] CreateBookModel bookToUpdate)
+        {            
+            var result = await _bookService.UpdateBook(bookToUpdate);
+
+            if (result.Succeded)
+                return Ok(_mapper.Map<BookModel>(result.ResultObject));
+            else
+                return BadRequest(result.FailureMessages);
         }
 
         [HttpGet("{id}")]

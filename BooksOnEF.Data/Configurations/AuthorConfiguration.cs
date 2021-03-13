@@ -1,14 +1,10 @@
-﻿using BooksOnEF.Core.Models;
-using BooksOnEF.Core.Models.Interfaces;
+﻿using BooksOnEF.Core.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace BooksOnEF.Data.Configurations
 {
-    //Hmm ska vi kanske ha egna config entities och sedan projiceras till Core.Models?
     public class AuthorConfiguration : IEntityTypeConfiguration<Author>
     {
         public void Configure(EntityTypeBuilder<Author> builder)

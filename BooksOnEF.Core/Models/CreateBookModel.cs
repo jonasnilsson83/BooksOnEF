@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace BooksOnEF.Api.PresentationModels
+namespace BooksOnEF.Core.Models
 {
-    public class BookModel
+    public class CreateBookModel
     {
-        public virtual AuthorModel Author { get; set; }
-
         public int AuthorId { get; set; }
 
         public string Title { get; set; }
@@ -18,12 +15,13 @@ namespace BooksOnEF.Api.PresentationModels
 
         public int Id { get; set; }
 
+        public string Description { get; set; }
         public string ISBN { get; set; }
 
-        public int? TotalPages { get; set; }
+        public int TotalPages { get; set; }
 
-        public DateTime? PublicationDate { get; set; }
+        public DateTime PublicationDate { get; set; }
 
-        public int? Edition { get; set; }
+        public int Edition { get; set; }
     }
 }

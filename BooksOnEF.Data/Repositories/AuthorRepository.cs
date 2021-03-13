@@ -1,9 +1,6 @@
-﻿using BooksOnEF.Core.Models;
-using BooksOnEF.Core.Models.Interfaces;
+﻿using BooksOnEF.Core.DataModels;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BooksOnEF.Data.Repositories

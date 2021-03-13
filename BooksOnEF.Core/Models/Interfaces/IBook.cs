@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BooksOnEF.Core.DataModels;
 
 namespace BooksOnEF.Core.Models.Interfaces
 {

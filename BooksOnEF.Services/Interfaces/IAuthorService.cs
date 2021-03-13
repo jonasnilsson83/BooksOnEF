@@ -1,4 +1,5 @@
 ﻿using BooksOnEF.Core;
+using BooksOnEF.Core.DataModels;
 using BooksOnEF.Core.Models;
 using BooksOnEF.Core.Models.Interfaces;
 using System;
@@ -12,8 +13,8 @@ namespace BooksOnEF.Services.Interfaces
     {
         Task<Result<IEnumerable<Author>>> GetAllAuthors();
         Task<Result<Author>> GetAuthorById(int id);
-        Task<Result<Author>> CreateAuthor(Author newAuthor);
-        Task<Result<Author>> UpdateAuthor(Author authorToBeUpdated);
+        Task<Result<Author>> CreateAuthor(CreateAuthorModel newAuthor);
+        Task<Result<Author>> UpdateAuthor(CreateAuthorModel authorToBeUpdated);
         Task<Result<Author>> DeleteAuthor(int authorId);
     }
 }

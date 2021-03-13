@@ -1,4 +1,4 @@
-﻿using BooksOnEF.Core.Models;
+﻿using BooksOnEF.Core.DataModels;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

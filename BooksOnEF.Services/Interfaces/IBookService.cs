@@ -1,4 +1,5 @@
 ﻿using BooksOnEF.Core;
+using BooksOnEF.Core.DataModels;
 using BooksOnEF.Core.Models;
 using BooksOnEF.Core.Models.Interfaces;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace BooksOnEF.Services.Interfaces
         Task<Result<IEnumerable<Book>>> GetAllBooksWithAuthor();
         ValueTask<Result<Book>> GetBookById(int id);
         Task<Result<IEnumerable<Book>>> GetBooksByAuthorId(int authorId);
-        Task<Result<Book>> CreateBook(Book newBook);
-        Task<Book> UpdateBook(Book bookToBeUpdated);
+        Task<Result<Book>> CreateBook(CreateBookModel newBook);
+        Task<Result<Book>> UpdateBook(CreateBookModel bookToBeUpdated);
         Task<ResultBase> DeleteBook(int id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using BooksOnEF.Core.Models.Interfaces;
+﻿using BooksOnEF.Core.DataModels;
+using BooksOnEF.Core.Models.Interfaces;
 
 namespace BooksOnEF.Core.Models
 {

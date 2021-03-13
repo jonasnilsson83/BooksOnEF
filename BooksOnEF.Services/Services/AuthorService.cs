@@ -1,4 +1,5 @@
 ﻿using BooksOnEF.Core;
+using BooksOnEF.Core.DataModels;
 using BooksOnEF.Core.Models;
 using BooksOnEF.Data.Repositories;
 using BooksOnEF.Services.Interfaces;
@@ -19,16 +20,22 @@ namespace BooksOnEF.Services.Services
             _authorValidator = new AuthorValidator();
         }
 
-        public async Task<Result<Author>> CreateAuthor(Author newAuthor)
+        public async Task<Result<Author>> CreateAuthor(CreateAuthorModel newAuthor)
         {
-            var validationResult = await _authorValidator.ValidateAsync(newAuthor);
+            Author author = new Author()
+            {
+                FirstName = newAuthor.FirstName,
+                LastName = newAuthor.LastName
+            };
+
+            var validationResult = await _authorValidator.ValidateAsync(author);
 
             if (!validationResult.IsValid)
             {
-                return Result.Failure(newAuthor, validationResult.Errors.Select(s => s.ErrorMessage).ToList());
+                return Result.Failure(author, validationResult.Errors.Select(s => s.ErrorMessage).ToList());
             }
 
-            var createdAuthor = await _authorRepository.AddAsync(newAuthor);
+            var createdAuthor = await _authorRepository.AddAsync(author);
 
             return Result.Success(createdAuthor);
         }
@@ -37,7 +44,6 @@ namespace BooksOnEF.Services.Services
         {
             var getAuthorResult = await GetAuthorById(authorId);
 
-            //if (author == null || !author.HasBooks)
             if (!getAuthorResult.Succeded || !getAuthorResult.ResultObject.HasBooks)
             {
                 return Result.Failure(getAuthorResult.ResultObject, "Unable to delete");
@@ -72,7 +78,7 @@ namespace BooksOnEF.Services.Services
             return Result.Success(author);
         }
 
-        public async Task<Result<Author>> UpdateAuthor(Author authorToBeUpdated)
+        public async Task<Result<Author>> UpdateAuthor(CreateAuthorModel authorToBeUpdated)
         {
             var existingAuthorResult = await GetAuthorById(authorToBeUpdated.Id);
 
@@ -81,16 +87,19 @@ namespace BooksOnEF.Services.Services
                 return Result.Failure(existingAuthorResult.ResultObject, existingAuthorResult.FailureMessages);
             }
 
-            var validationResult = await _authorValidator.ValidateAsync(authorToBeUpdated);
+
+            existingAuthorResult.ResultObject.FirstName = authorToBeUpdated.FirstName;
+            existingAuthorResult.ResultObject.LastName = authorToBeUpdated.LastName;
+        
+
+            var validationResult = await _authorValidator.ValidateAsync(existingAuthorResult.ResultObject);
 
             if (!validationResult.IsValid)
             {
                 return Result.Failure(existingAuthorResult.ResultObject, validationResult.Errors.Select(s => s.ErrorMessage).ToList());
             }
 
-            existingAuthorResult.ResultObject.FirstName = authorToBeUpdated.FirstName;
-            existingAuthorResult.ResultObject.LastName = authorToBeUpdated.LastName;
-
+            
             await _authorRepository.CommitAsync();
 
             return Result.Success(existingAuthorResult.ResultObject);

@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using BooksOnEF.Api.PresentationModels;
-using BooksOnEF.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BooksOnEF.Core.DataModels;
 
 namespace BooksOnEF.Api.Mapping
 {
@@ -17,10 +13,8 @@ namespace BooksOnEF.Api.Mapping
             CreateMap<Author, AuthorModel>();
 
             // PresentationModel -> Domain 
-            //            CreateMap<Book, BookModel>();
+            CreateMap<BookModel, Book>();
             CreateMap<AuthorModel, Author>();
-
-
         }
     }
 }

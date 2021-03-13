@@ -4,9 +4,8 @@ using System.Text;
 
 namespace BooksOnEF.Core.Models
 {
-    public class BookAuthor
+    public class CreateAuthorModel
     {
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

@@ -1,7 +1,5 @@
-﻿using BooksOnEF.Core.Models.Interfaces;
-using System;
+﻿using BooksOnEF.Core.DataModels;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BooksOnEF.Core.Models.Interfaces
 {

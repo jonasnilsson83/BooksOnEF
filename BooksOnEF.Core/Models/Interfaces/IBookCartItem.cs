@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BooksOnEF.Core.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

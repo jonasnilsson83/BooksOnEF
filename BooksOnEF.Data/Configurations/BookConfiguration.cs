@@ -1,5 +1,4 @@
-﻿using BooksOnEF.Core.Models;
-using BooksOnEF.Core.Models.Interfaces;
+﻿using BooksOnEF.Core.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -27,6 +26,25 @@ namespace BooksOnEF.Data.Configurations
             builder
                 .Property(m => m.Title)
                 .IsRequired();
+
+            builder
+                .Property(m => m.Description);
+
+            builder
+                .Property(m => m.Edition)
+                .IsRequired(false);
+
+            builder
+                .Property(m => m.ISBN);
+
+            builder
+                .Property(m => m.PublicationDate)
+                .IsRequired(false);
+             
+            builder
+                .Property(m => m.TotalPages)
+                .IsRequired(false);
+            
 
             builder
                 .HasOne(m => m.Author)

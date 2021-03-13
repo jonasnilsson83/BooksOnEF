@@ -1,9 +1,9 @@
-﻿using BooksOnEF.Core.Models.Interfaces;
+﻿
 using System.Collections.Generic;
 
-namespace BooksOnEF.Core.Models
+namespace BooksOnEF.Core.DataModels
 {
-    public class Author //: IAuthor
+    public class Author
     {
         public Author() 
         {

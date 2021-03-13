@@ -1,4 +1,5 @@
 ﻿using BooksOnEF.Core;
+using BooksOnEF.Core.DataModels;
 using BooksOnEF.Core.Models;
 using BooksOnEF.Core.Models.Interfaces;
 using BooksOnEF.Data.Repositories;
@@ -23,16 +24,18 @@ namespace BooksOnEF.Services.Services
             _validator = new BookValidator();
         }
 
-        public async Task<Result<Book>> CreateBook(Book newBook)
+        public async Task<Result<Book>> CreateBook(CreateBookModel newBook)
         {
-            ValidationResult validationResult = _validator.Validate(newBook);
+            Book book = From(newBook);
+
+            ValidationResult validationResult = _validator.Validate(book);
 
             if (!validationResult.IsValid)
             {
-                return Result.Failure(newBook, validationResult.Errors.Select(s => s.ErrorMessage).ToList());
+                return Result.Failure(book, validationResult.Errors.Select(s => s.ErrorMessage).ToList());
             }
 
-            var bookFromEF = await _bookRepository.AddAsync(newBook);
+            var bookFromEF = await _bookRepository.AddAsync(book);
 
             return Result.Success(bookFromEF);
         }
@@ -90,9 +93,48 @@ namespace BooksOnEF.Services.Services
 
 
 
-        public Task<Book> UpdateBook(Book bookToBeUpdated)
+        public async Task<Result<Book>> UpdateBook(CreateBookModel bookToBeUpdated)
         {
-            throw new NotImplementedException();
+            var existingBookResult = await GetBookById(bookToBeUpdated.Id);
+
+            if (!existingBookResult.Succeded)
+            {
+                return Result.Failure(existingBookResult.ResultObject, existingBookResult.FailureMessages);
+            }
+
+            existingBookResult.ResultObject = From(bookToBeUpdated, existingBookResult.ResultObject);
+
+            var validationResult = await _validator.ValidateAsync(existingBookResult.ResultObject);
+
+            if (!validationResult.IsValid)
+            {
+                return Result.Failure(existingBookResult.ResultObject, validationResult.Errors.Select(s => s.ErrorMessage).ToList());
+            }
+
+
+            await _bookRepository.CommitAsync();
+
+            return Result.Success(existingBookResult.ResultObject);
+        }
+
+        private Book From(CreateBookModel createBookModel, Book existingBook = null)
+        {
+            Book fromBook = existingBook ?? new Book();
+
+
+            fromBook.AuthorId = createBookModel.AuthorId;
+            fromBook.Description = createBookModel.Description;
+            fromBook.Edition = createBookModel.Edition;
+            fromBook.Id = createBookModel.Id;
+            fromBook.ISBN = createBookModel.ISBN;
+            fromBook.NbrInStock = createBookModel.NbrInStock;
+            fromBook.Price = createBookModel.Price;
+            fromBook.PublicationDate = createBookModel.PublicationDate;
+            fromBook.Title = createBookModel.Title;
+            fromBook.TotalPages = createBookModel.TotalPages;
+
+
+            return fromBook;
         }
 
         public TReturn Invoke<TReturn>(Func<TReturn> function)

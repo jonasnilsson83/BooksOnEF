@@ -33,7 +33,7 @@ namespace BooksOnEF.Api.Controllers
         }
 
         [HttpPost("")]
-        public async Task<ActionResult> CreateAuthor(Author author)
+        public async Task<ActionResult> CreateAuthor(CreateAuthorModel author)
         {
             var result = await _authorService.CreateAuthor(author);
 
@@ -48,11 +48,10 @@ namespace BooksOnEF.Api.Controllers
         }
 
         [HttpPut("")]
-        public async Task<ActionResult> UpdateAuthor([FromBody] AuthorModel authorToUpdate)
+        public async Task<ActionResult> UpdateAuthor([FromBody] CreateAuthorModel authorToUpdate)
         {
-            var domainAuthor = _mapper.Map<Core.Models.Author>(authorToUpdate);
-
-            var result = await _authorService.UpdateAuthor(domainAuthor);
+            
+            var result = await _authorService.UpdateAuthor(authorToUpdate);
 
             if (result.Succeded)
                 return Ok(_mapper.Map<AuthorModel>(result.ResultObject));
@@ -78,7 +77,7 @@ namespace BooksOnEF.Api.Controllers
             var result = await _authorService.GetAllAuthors();
 
             if (result.Succeded)
-                return Ok(_mapper.Map<IEnumerable<Author>>(result.ResultObject));
+                return Ok(_mapper.Map<IEnumerable<AuthorModel>>(result.ResultObject));
             else
                 return NotFound();
         }
